@@ -67,9 +67,14 @@ If required, free bed and breakfast accommodation wll be provided for attendees 
 
 - Calling Structural Variants
 - Interpreting and visualising SV calls
+- WORKSHOP DINNER
 
 ## Day Five (1/2 day) 09:30 - 12:30
 
 -  Dealing with large collections of Genomes
 -  Obtaining TCGA (/ICGC?) data
 -  Mutational signatures
+
+# Social Events
+
+The workshop dinner will be held in Christ's College on Day Four; dress code is smart casual. The dinner is free. Please inform us of any dietary requirements when you register.
