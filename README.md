@@ -1,4 +1,6 @@
 # CRUK Bioinformatics Summer School 2016
+# 25th - 28th July 2016
+
 ## Analysis of Cancer Genomes
 
 # Description
@@ -32,21 +34,28 @@ However, such datasets pose new challenges in the way the data have to be analyz
     ii) assess which calls might be biologically-meaningful and warrant further investigation
 - Know how to access TCGA and ICGC data and how they can inform other studies
 
+
+# Venue
+- Craik-Marshall room, Department of Genetics
+
+# Accommodation
+If required, free bed and breakfast accommodation wll be provided for attendees in Downing College - close to the course's location. Please let us know on the registration form if you need accommodation and when you plan to check-in and check-out.
+
 # Timetable
 
-## Day One
+## Day One 09:30 - 17:00
 
 - Introduction to Sequencing technologies
 - Introduction / Recap of R
 - Quality assessment of NGS data
 
-## Day Two
+## Day Two 09:30 - 17:00
 
 - Dealing with NGS data in Bioconductor
 - Analysis of Exome data
 - Copy-number analysis
   
-## Day Three
+## Day Three 09:30 - 17:00
 
 - Calling SNVs from NGS data
     - Germline / somatic SNPs
@@ -54,12 +63,12 @@ However, such datasets pose new challenges in the way the data have to be analyz
 - Visualising / verifying SNV calls in IGV
 - Annotating SNVs with annovar / Bioconductor
   
-## Day Four
+## Day Four 09:30 - 17:00
 
 - Calling Structural Variants
 - Interpreting and visualising SV calls
 
-## Day Five (1/2 day)
+## Day Five (1/2 day) 09:30 - 12:30
 
 -  Dealing with large collections of Genomes
 -  Obtaining TCGA (/ICGC?) data
