@@ -58,8 +58,6 @@ If required, free bed and breakfast accommodation wll be provided for attendees 
 ## Day Three 09:30 - 17:00
 
 - Calling SNVs from NGS data
-    - Germline / somatic SNPs
-    - indels (describing the issues with)
 - Visualising / verifying SNV calls in IGV
 - Annotating SNVs with annovar / Bioconductor
   
