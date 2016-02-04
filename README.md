@@ -14,7 +14,6 @@ However, such datasets pose new challenges in the way the data have to be analyz
 - Geoff Macintyre
 - Oscar Rueda
 - Maria Secrier
-- (Ines de Santiago?)
 
 # Aims
 
@@ -40,35 +39,28 @@ However, such datasets pose new challenges in the way the data have to be analyz
 - Introduction to Sequencing technologies
 - Introduction / Recap of R
 - Quality assessment of NGS data
-      - fastqc
-      - IGV
-      - trimming / adaptors
-      
+
 ## Day Two
 
 - Dealing with NGS data in Bioconductor
-    - Genomic Ranges and Biostrings
 - Analysis of Exome data
-    - Copy-number analysis
+- Copy-number analysis
   
 ## Day Three
 
 - Calling SNVs from NGS data
     - Germline / somatic SNPs
     - indels (describing the issues with)
-- Interpreting calls
-    - Visualising / verifying in IGV
-    - Annotating with annovar / Bioconductor
+- Visualising / verifying SNV calls in IGV
+- Annotating SNVs with annovar / Bioconductor
   
 ## Day Four
 
 - Calling Structural Variants
-- Interpreting and visualising calls
-    - circos / Bioconductor equivalents
-    - downstream analysis
-    
+- Interpreting and visualising SV calls
+
 ## Day Five (1/2 day)
 
 -  Dealing with large collections of Genomes
-    - Obtaining TCGA (/ICGC?) data
-    - Mutational signatures
+-  Obtaining TCGA (/ICGC?) data
+-  Mutational signatures
