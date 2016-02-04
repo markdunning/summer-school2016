@@ -57,7 +57,7 @@ If required, free bed and breakfast accommodation wll be provided for attendees 
   
 ## Day Three 09:30 - 17:00
 
-- Calling SNVs from NGS data
+- Calling SNVs from whole-genome sequencing data
 - Visualising / verifying SNV calls in IGV
 - Annotating SNVs with annovar / Bioconductor
   
@@ -70,7 +70,7 @@ If required, free bed and breakfast accommodation wll be provided for attendees 
 ## Day Five (1/2 day) 09:30 - 12:30
 
 -  Dealing with large collections of Genomes
--  Obtaining TCGA (/ICGC?) data
+-  Obtaining TCGA data
 -  Mutational signatures
 
 # Social Events
