@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 # CRUK Bioinformatics Summer School 2016
 # 25th - 28th July 2016
 
@@ -15,7 +18,6 @@ However, such datasets pose new challenges in the way the data have to be analyz
 - Andy Lynch
 - Geoff Macintyre
 - Oscar Rueda
-- Maria Secrier
 
 # Aims
 
@@ -52,19 +54,22 @@ If required, free bed and breakfast accommodation wll be provided for attendees 
 ## Day Two 09:30 - 17:00
 
 - Dealing with NGS data in Bioconductor
-- Analysis of Exome data
-- Copy-number analysis
+- Copy-number analysis using i) Exome data ii) Shallow sequencing data
+- Obtaining allele-specific copy-number estimates
   
 ## Day Three 09:30 - 17:00
 
-- Calling SNVs from whole-genome sequencing data
+- Calling Germline SNVs
+- Calling Somatic SNVs from whole-genome sequencing data
 - Visualising / verifying SNV calls in IGV
-- Annotating SNVs with annovar / Bioconductor
+- Annotating SNVs
   
 ## Day Four 09:30 - 17:00
 
 - Calling Structural Variants
 - Interpreting and visualising SV calls
+- Filtering a set of variant calls
+- Identifying events such as chromothripsis
 - WORKSHOP DINNER
 
 ## Day Five (1/2 day) 09:30 - 12:30
@@ -72,6 +77,7 @@ If required, free bed and breakfast accommodation wll be provided for attendees 
 -  Dealing with large collections of Genomes
 -  Obtaining TCGA data
 -  Mutational signatures
+-  Integrating different data types
 
 # Social Events
 
