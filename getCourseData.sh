@@ -5,14 +5,22 @@ mkdir -p ref_data
 wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/human_g1k_v37.fasta.gz -P ref_data/
 gunzip ref_data/human_g1k_v37.fasta.gz
 
-samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/HG00096/exome_alignment/HG00096.mapped.illumina.mosaik.GBR.exome.20111114.bam 22 | samtools view -bS - > data/hapmap/HG00096.chr22.bam
-samtools index data/hapmap/HG00096.chr22.bam
-rm HG00096.mapped.illumina.mosaik.GBR.exome.20111114.bam.bai
+samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/NA19239/exome_alignment/NA19239.mapped.solid.mosaik.YRI.exome.20111114.bam 22 | samtools view -bS - > data/hapmap/NA19239.chr22.bam
+samtools index data/hapmap/NA19239.chr22.bam
 
-samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/HG00100/exome_alignment/HG00100.mapped.illumina.mosaik.GBR.exome.20111114.bam 22 | samtools view -bS - > data/hapmap/HG00100.chr22.bam
-samtools index data/hapmap/HG00100.chr22.bam
-rm HG00100.mapped.illumina.mosaik.GBR.exome.20111114.bam.bai
+samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/NA19238/exome_alignment/NA19238.mapped.illumina.mosaik.YRI.exome.20111114.bam 22 | samtools view -bS - > data/hapmap/NA19238.chr22.bam
+samtools index data/hapmap/NA19238.chr22.bam
 
-samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/HG00101/exome_alignment/HG00101.mapped.illumina.mosaik.GBR.exome.20111114.bam 22 | samtools view -bS - > data/hapmap/HG00101.chr22.bam
-samtools index data/hapmap/HG00101.chr22.bam
-rm HG00101.mapped.illumina.mosaik.GBR.exome.20111114.bam.bai
+samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/NA19240/exome_alignment/NA19240.mapped.solid.mosaik.YRI.exome.20111114.bam 22 | samtools view -bS - > data/hapmap/NA19240.chr22.bam
+samtools index data/hapmap/NA19240.chr22.bam
+
+samtools view -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/NA19239/exome_alignment/NA19239.mapped.solid.mosaik.YRI.exome.20111114.bam | samtools view -bS - > sample1.bam
+
+wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/NA06984/exome_alignment/NA06984.mapped.illumina.mosaik.CEU.exome.20111114.bam
+
+java -jar /home/dunnin01/software/picard-tools-2.3.0/picard.jar DownsampleSam I=NA06984.mapped.illumina.mosaik.CEU.exome.20111114.bam O=random.bam P=0.1 VALIDATION_STRINGENCY=SILENT
+
+samtools view -f 0x02 -b random.bam > paired.bam 
+
+java -jar /home/dunnin01/software/picard-tools-2.3.0/picard.jar SamToFastq I=paired.bam F=sample.fq1 VALIDATION_STRINGENCY=SILENT F2=sample.fq2 R1_MAX_BASES=68 R2_MAX_BASES=68
+
