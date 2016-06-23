@@ -3,12 +3,8 @@ FROM bioconductor/release_base
 MAINTAINER Mark Dunning<mark.dunning@cruk.cam.ac.uk>
 
 
-RUN apt-get update && apt-get install -y --fix-missing git libqt4-opengl-dev samtools bowtie2 fastx-toolkit tophat python-dev cmake vcftools 
-###Get repository of the course. Install data and R packages
-RUN git clone https://github.com/markdunning/summer-school2016.git /home/rstudio/
-WORKDIR /home/rstudio
-#RUN chmod +x getCourseData.sh
-#RUN ./getCourseData.sh
+RUN apt-get update && apt-get install --fix-missing -y git samtools fastx-toolkit python-dev cmake bwa
+
 #RUN rm -r images javascripts stylesheets params.json index.html
 WORKDIR /tmp
 RUN wget http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.3.zip -P /tmp
@@ -20,16 +16,14 @@ RUN sudo python get-pip.py
 RUN sudo pip install cython
 RUN sudo pip install --user --upgrade cutadapt
 RUN rm get-pip.py
-RUN sudo apt-get install -y openjdk-7-jdk
 RUN wget https://github.com/samtools/htslib/releases/download/1.3.1/htslib-1.3.1.tar.bz2
-RUN bzip -d htslib-1.3.1.tar.bz2
+RUN apt-get install -y bzip2 tabix bedtools build-essential git-core cmake zlib1g-dev libncurses-dev
+RUN bzip2 -d htslib-1.3.1.tar.bz2
 RUN tar xvf htslib-1.3.1.tar
 WORKDIR htslib-1.3.1
-RUN make install
+RUN make install 
 RUN chmod +x ~/.local/bin/cutadapt
 RUN ln -s ~/.local/bin/cutadapt /usr/bin/cutadapt
-WORKDIR /home/rstudio/
-RUN R -f installBioCPkgs.R
 WORKDIR /tmp
 RUN git clone --recursive git://github.com/ekg/freebayes.git
 WORKDIR freebayes
@@ -42,20 +36,29 @@ WORKDIR somatic-sniper/build
 RUN cmake ../
 RUN make deps
 RUN make -j
-RUN make text
+RUN make test
 RUN make install
-RUN apt-get install tabix bedtools build-essential git-core cmake zlib1g-dev libncurses-dev
 WORKDIR /tmp
-RUN wget http://www.openbioinformatics.org/annovar/download/0wgxR2rIVP/annovar.latest.tar.gz
-RUN tar xvfz annovar.latest.tar.gz
-RUN ln -s /tmp/annovar/annotate_variation.pl /usr/bin
-RUN ln -s /tmp/annovar/table_annovar.pl /usr/bin
-RUN annotate_variation.pl -buildver hg19 -downdb refGene /home/rstudio/ref_data/annovar
-RUN annotate_variation.pl -buildver hg19 -downdb cytoBand /home/rstudio/ref_data/annovar
-RUN annotate_variation.pl -buildver hg19 -downdb genomicSuperDups /home/rstudio/ref_data/annovar
-RUN annotate_variation.pl -buildver hg19 -downdb -webfrom annovar esp6500siv2_al /home/rstudio/ref_data/annovar
-RUN annotate_variation.pl -buildver hg19 -downdb -webfrom annovar 1000g2014oct /home/rstudio/ref_data/annovar
-RUN annotate_variation.pl -buildver hg19 -downdb -webfrom annovar snp138 /home/rstudio/ref_data/annovar
-RUN annotate_variation.pl -buildver hg19 -downdb -webfrom annovar ljb26_all /home/rstudio/ref_data/annovar
-
-WORKDIR /home/rstudio/
+RUN wget http://www.well.ox.ac.uk/bioinformatics/Software/Platypus-latest.tgz
+RUN tar xvf Platypus-latest.tgz
+WORKDIR Platypus_0.8.1
+RUN ./buildPlatypus.sh
+RUN ln -s /tmp/Platypus_0.8.1/Platypus.py /usr/bin
+WORKDIR /tmp
+RUN wget https://github.com/broadinstitute/picard/releases/download/2.4.1/picard-tools-2.4.1.zip
+RUN unzip picard-tools-2.4.1.zip
+RUN apt-get update &&  apt-get install -y --fix-missing openjdk-8-jdk
+ENV PICARD /tmp/picard-tools-2.4.1/picard.jar
+WORKDIR /tmp
+RUN wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.36.zip
+RUN unzip Trimmomatic-0.36.zip
+ENV TRIMMOMATIC /tmp/Trimmomatic-0.36/trimmomatic-0.36.jar
+RUN git clone https://github.com/markdunning/summer-school2016.git /home/Course_Materials/
+RUN ls /home/Course_Materials/
+WORKDIR /home/Course_Materials
+RUN chmod +x getCourseData.sh
+RUN ./getCourseData.sh
+RUN R -f installBioCPkgs.R
+WORKDIR ref_data
+RUN bwa index -a bwtsw human_g1k_v37.fasta
+WORKDIR /home/Course_Materials
