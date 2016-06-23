@@ -17,13 +17,14 @@ samtools index data/hapmap/NA12873.chr20.bam
 
 
 
-#wget ftp://ftp.ncbi.nlm.nih.gov/1000genomes/ftp/phase3/data/NA12878/alignment/NA12878.mapped.ILLUMINA.bwa.CEU.exome.20121211.bam
 
-#java -jar $PICARD DownsampleSam I=NA12878.mapped.ILLUMINA.bwa.CEU.exome.20121211.bam O=random.bam P=0.1 VALIDATION_STRINGENCY=SILENT
+wget ftp://ftp.ncbi.nlm.nih.gov/1000genomes/ftp/phase3/data/NA12878/alignment/NA12878.mapped.ILLUMINA.bwa.CEU.low_coverage.20121211.bam
 
-#rm NA12878.mapped.ILLUMINA.bwa.CEU.exome.20121211.bam
+java -jar $PICARD DownsampleSam I=NA12878.mapped.ILLUMINA.bwa.CEU.low_coverage.20121211.bam O=random.bam P=0.1 VALIDATION_STRINGENCY=SILENT
 
-#samtools view -f 0x02 -b random.bam > paired.bam 
+rm NA12878.mapped.ILLUMINA.bwa.CEU.exome.20121211.bam
 
-#java -jar $PICARD SamToFastq I=paired.bam F=sample.fq1 VALIDATION_STRINGENCY=SILENT F2=sample.fq2 R1_MAX_BASES=68 R2_MAX_BASES=68
+samtools view -f 0x02 -b random.bam > Day1/paired.bam 
+
+java -jar $PICARD SamToFastq I=Day1/paired.bam F=Day1/sample.fq1 VALIDATION_STRINGENCY=SILENT F2=Day1/sample.fq2 R1_MAX_BASES=68 R2_MAX_BASES=68
 
