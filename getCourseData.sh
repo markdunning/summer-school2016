@@ -18,9 +18,9 @@ samtools index data/hapmap/NA12873.chr20.bam
 
 
 
-wget ftp://ftp.ncbi.nlm.nih.gov/1000genomes/ftp/phase3/data/NA12878/alignment/NA12878.mapped.ILLUMINA.bwa.CEU.low_coverage.20121211.bam
+wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/other_exome_alignments/NA06984/exome_alignment/NA06984.mapped.illumina.mosaik.CEU.exome.20111114.bam
 
-java -jar $PICARD DownsampleSam I=NA12878.mapped.ILLUMINA.bwa.CEU.low_coverage.20121211.bam O=random.bam P=0.1 VALIDATION_STRINGENCY=SILENT
+java -jar $PICARD DownsampleSam I=NA06984.mapped.illumina.mosaik.CEU.exome.20111114.bam O=random.bam P=0.1 VALIDATION_STRINGENCY=SILENT
 
 rm NA12878.mapped.ILLUMINA.bwa.CEU.exome.20121211.bam
 
